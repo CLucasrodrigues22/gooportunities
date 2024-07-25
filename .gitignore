@@ -1,0 +1,13 @@
+# Binaries
+
+*.dll
+*.so
+*dylib
+
+# Test binary
+
+*.test
+
+# Coverage
+
+.env
