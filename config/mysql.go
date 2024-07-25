@@ -14,7 +14,7 @@ func InitializeMySQL() (*gorm.DB, error) {
 	// Load .env credentials
 	err := godotenv.Load()
 	if err != nil {
-		logger.Fatalf("File .env not exist: %v", err)
+		logger.Errorf("File .env not exist: %v", err)
 	}
 	dbUser := os.Getenv("DB_USER")
 	dbPassword := os.Getenv("DB_PASSWORD")
