@@ -9,7 +9,11 @@ import (
 func CreateOpeningHandler(context *gin.Context) {
 	request := CreateOpeningRequest{}
 
-	context.BindJSON(&request)
+	if err := context.BindJSON(&request); err != nil {
+		logger.Errorf("bind json error: %v", err.Error())
+		sendError(context, http.StatusBadRequest, err.Error())
+		return
+	}
 
 	if err := request.Validate(); err != nil {
 		logger.Errorf("validate error: %v", err.Error())
@@ -26,7 +30,7 @@ func CreateOpeningHandler(context *gin.Context) {
 		Salary:   request.Salary,
 	}
 
-	if err := db.Create(&request).Error; err != nil {
+	if err := db.Create(&opening).Error; err != nil {
 		logger.Errorf("DB Error: %v", err.Error())
 		sendError(context, http.StatusInternalServerError, "Error creating opening.")
 		return
