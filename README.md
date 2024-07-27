@@ -41,7 +41,7 @@ git clone https://github.com/CLucasrodrigues22/gooportunities.git
 - Open a new terminal windows at the root of the project and create an .env based on the .env.example:
 
 ```
-cp .env .env.example
+cp .env.example .env
 ```
 
 - Specify th MySQL credentials, change the http port, through the .env created:
@@ -56,16 +56,14 @@ DB_PASSWORD=yourpassword
 DB_NAME=yourdbname
 ```
 
-- Run the commando to install golang dependencies used:
-
-```
-go mod tidy
-```
-
-
-
-- To run on a local machine, just use the make command (command specified in the ./makefile)
+- Run the command to up docker containers:
 
 ```
 make
+```
+
+- To run on local machine, use the command:
+
+```
+make run-local
 ```

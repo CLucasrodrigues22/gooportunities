@@ -3,11 +3,17 @@
 APP_NAME=gopportunities
 
 # Tasks
-default: run-with-docs
+default: run-docker-up
 
+run-docker-up:
+	@swag init
+	@docker-compose up -d
+	@docker ps
+run-docker-down:
+	@docker-compose down
 run:
 	@go run main.go
-run-with-docs:
+run-local:
 	@swag init
 	@go run main.go
 build:
