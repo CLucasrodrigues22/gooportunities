@@ -1,0 +1,175 @@
+{
+	"info": {
+		"_postman_id": "bbdf1a51-b988-4079-9727-14f59e80f2ed",
+		"name": "Go Oportunities",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "15164640"
+	},
+	"item": [
+		{
+			"name": "opening",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/opening?id=4",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"opening"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "4"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "openings",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/openings",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"openings"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create opening",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"role\": \"mid-level GO developer\",\n    \"company\": \"microlins\",\n    \"location\": \"california\",\n    \"remote\": true,\n    \"salary\": 24000,\n    \"link\": \"vaga.com/vagafoda\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/opening",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"opening"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update opening",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/opening",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"opening"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete opening",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/opening?id=2",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"opening"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "http://localhost:8000/api/v1",
+			"type": "string"
+		}
+	]
+}
