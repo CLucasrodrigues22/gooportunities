@@ -1,6 +1,9 @@
 package router
 
-import "github.com/gin-gonic/gin"
+import (
+	"github.com/gin-gonic/gin"
+	"os"
+)
 
 func InitializeRouter() {
 	// Initialize router
@@ -8,5 +11,6 @@ func InitializeRouter() {
 	// Initialize routes
 	initializeRoutes(router)
 	// Run the server
-	router.Run(":8000") // listen and serve on 0.0.0.0:8080
+	routePort := os.Getenv("APP_PORT")
+	router.Run(":" + routePort) // listen and serve on 0.0.0.0:APP_PORT
 }
