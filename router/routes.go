@@ -1,37 +1,26 @@
 package router
 
 import (
+	docs "github.com/CLucasrodrigues22/gooportunities/docs"
+	"github.com/CLucasrodrigues22/gooportunities/handler"
 	"github.com/gin-gonic/gin"
-	"net/http"
+	swaggerfiles "github.com/swaggo/files"
+	ginSwagger "github.com/swaggo/gin-swagger"
 )
 
 func initializeRoutes(router *gin.Engine) {
+	// Initialize handler
+	handler.InitHandler()
+	basePath := "/api/v1"
+	docs.SwaggerInfo.BasePath = basePath
 	v1 := router.Group("/api/v1")
 	{
-		v1.GET("/opening", func(context *gin.Context) {
-			context.JSON(http.StatusOK, gin.H{
-				"msg": "GET opening",
-			})
-		})
-		v1.POST("/opening", func(context *gin.Context) {
-			context.JSON(http.StatusOK, gin.H{
-				"msg": "POST opening",
-			})
-		})
-		v1.DELETE("/opening", func(context *gin.Context) {
-			context.JSON(http.StatusOK, gin.H{
-				"msg": "DELETE opening",
-			})
-		})
-		v1.PUT("/opening", func(context *gin.Context) {
-			context.JSON(http.StatusOK, gin.H{
-				"msg": "PUT opening",
-			})
-		})
-		v1.GET("/openings", func(context *gin.Context) {
-			context.JSON(http.StatusOK, gin.H{
-				"msg": "GET openings",
-			})
-		})
+		v1.GET("/opening", handler.ShowOpeningHandler)
+		v1.POST("/opening", handler.CreateOpeningHandler)
+		v1.DELETE("/opening", handler.DeleteOpeningHandler)
+		v1.PUT("/opening", handler.UpdateOpeningHandler)
+		v1.GET("/openings", handler.ListOpeningsHandler)
 	}
+	// Initialize Swagger
+	router.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerfiles.Handler))
 }
